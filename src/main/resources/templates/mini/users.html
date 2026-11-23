@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ユーザーリスト</title>
+  </head>
+  <body>
+    <header>
+      <h1>ユーザーリスト</h1>
+    </header>
+
+    <main>
+      <h2>ユーザー一覧</h2>
+
+      <form th:action="@{/mini/users}" method="get">
+        <input type="text" name="name" />
+        <button type="submit">検索</button>
+      </form>
+
+      <div>
+        <div th:each="user : ${userList}">
+          <p>ユーザーID:<span th:text="${user.id}"></span></p>
+          <p>名前：<span th:text="${user.name}"></span></p>
+          <p>年齢：<span th:text="${user.age}"></span></p>
+          <p>
+            詳細リンク：
+            <a th:href="@{/mini/users/{id}(id=${user.id})}">詳細を見る</a>
+          </p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
