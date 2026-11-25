@@ -2,6 +2,7 @@ package com.example.demo.dao;
 
 import java.sql.ResultSet;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -30,6 +31,18 @@ public class MiniUserDao {
 		});
 
 		return userList;
+	}
+
+	public Optional<MiniUserDto> findById(Integer id) {
+		String sql = "SELECT id, name, age, email FROM users WHERE id = ?";
+		List<MiniUserDto> userList = jdbcTemplate.query(sql, (ResultSet rs, int rowNum) -> new MiniUserDto(
+				rs.getInt("id"),
+				rs.getString("name"),
+				rs.getInt("age"),
+				rs.getString("email")), id);
+
+		return userList.stream().findFirst();
+
 	}
 
 }

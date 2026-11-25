@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,17 +24,8 @@ public class MiniUserService {
 
 	//userIdを取得
 	public Optional<MiniUserDto> getUserId(Integer id) {
-		List<MiniUserDto> userList = new ArrayList<>();
-		for (MiniUserDto user : userList) {
-			boolean match = user.getId().equals(id);
 
-			if (match) {
-				return Optional.of(user);
-			}
-		}
-		MiniUserDto noneUser = new MiniUserDto(999, "none", 0, "none");
-
-		return Optional.of(noneUser);
+		return miniUserDao.findById(id);
 	}
 
 }
