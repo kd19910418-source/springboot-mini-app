@@ -29,8 +29,7 @@ public class MiniController {
 	public String getUsers(@RequestParam(required = false) String name,
 			Model model) {
 
-		List<MiniUserDto> userList = new ArrayList<>();
-		userList = miniUserService.getAllUser();
+		List<MiniUserDto> userList = miniUserService.getAllUser();
 
 		if (name == null || name.isBlank()) {
 
@@ -40,9 +39,9 @@ public class MiniController {
 
 				if (user.getName().contains(name)) {
 					searchList.add(user);
-					userList = searchList;
 				}
 			}
+			userList = searchList;
 		}
 
 		model.addAttribute("userList", userList);

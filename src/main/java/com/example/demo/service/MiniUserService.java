@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,7 +25,7 @@ public class MiniUserService {
 
 	//userIdを取得
 	public Optional<MiniUserDto> getUserId(Integer id) {
-
+		List<MiniUserDto> userList = new ArrayList<>();
 		for (MiniUserDto user : userList) {
 			boolean match = user.getId().equals(id);
 
