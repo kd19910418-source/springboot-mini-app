@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -60,6 +61,26 @@ public class MiniController {
 		model.addAttribute("user", user);
 
 		return "mini/detail";
+	}
+
+	@GetMapping("/mini/users/new")
+	public String createUser() {
+		return "mini/create";
+	}
+
+	@PostMapping("/mini/users/newResult")
+	public String createUserResult(@RequestParam String name,
+			@RequestParam Integer age,
+			@RequestParam String email,
+			Model model) {
+
+		MiniUserDto user = new MiniUserDto(null, name, age, email);
+		miniUserService.createUser(user);
+
+		model.addAttribute("user", user);
+
+		return "mini/newResult";
+
 	}
 
 }

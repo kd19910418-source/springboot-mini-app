@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>新規登録</title>
+  </head>
+  <body>
+    <header>
+      <h1>新規登録</h1>
+    </header>
+
+    <main>
+      <div>
+        <h2>登録情報入力</h2>
+        <div>
+          <form th:action="@{/mini/users/newResult}" method="post">
+            <p><span>氏名: </span><input type="text" name="name" /></p>
+            <p><span>年齢: </span><input type="text" name="age" /></p>
+            <p>
+              <span>メールアドレス: </span><input type="text" name="email" />
+            </p>
+            <p><button type="submit">登録</button></p>
+          </form>
+        </div>
+        <p><a th:href="@{/mini}">戻る</a></p>
+      </div>
+    </main>
+  </body>
+</html>

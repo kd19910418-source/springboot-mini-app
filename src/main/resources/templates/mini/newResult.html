@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登録結果</title>
+  </head>
+  <body>
+    <header>
+      <h1>登録結果確認</h1>
+    </header>
+
+    <main>
+      <h2>以下の内容で登録しました</h2>
+      <div>
+        <p><span>氏名：</span> <span th:text="${user.name}"></span></p>
+        <p><span>年齢：</span> <span th:text="${user.age}"></span></p>
+        <p>
+          <span>メールアドレス：</span> <span th:text="${user.email}"></span>
+        </p>
+      </div>
+    </main>
+  </body>
+</html>

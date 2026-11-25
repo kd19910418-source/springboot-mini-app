@@ -28,4 +28,9 @@ public class MiniUserService {
 		return miniUserDao.findById(id);
 	}
 
+	//user登録
+	public void createUser(MiniUserDto user) {
+		miniUserDao.insert(user);
+	}
+
 }

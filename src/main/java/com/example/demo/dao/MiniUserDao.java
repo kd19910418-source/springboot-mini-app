@@ -45,4 +45,14 @@ public class MiniUserDao {
 
 	}
 
+	public void insert(MiniUserDto user) {
+		String sql = "INSERT INTO `users`(`name`, `age`, `email`) VALUES (?,?,?)";
+
+		jdbcTemplate.update(
+				sql,
+				user.getName(),
+				user.getAge(),
+				user.getEmail());
+	}
+
 }
