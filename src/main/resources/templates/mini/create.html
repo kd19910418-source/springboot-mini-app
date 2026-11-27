@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
     <title>新規登録</title>
   </head>
   <body>
@@ -15,10 +16,34 @@
         <h2>登録情報入力</h2>
         <div>
           <form th:action="@{/mini/users/newResult}" method="post">
-            <p><span>氏名: </span><input type="text" name="name" /></p>
-            <p><span>年齢: </span><input type="text" name="age" /></p>
+            <p class="errorMessage" th:text="${nameErrorMessage}"></p>
             <p>
-              <span>メールアドレス: </span><input type="text" name="email" />
+              <span>氏名: </span>
+              <input
+                type="text"
+                name="name"
+                th:value="${user != null ? user.name : ''}"
+              />
+            </p>
+
+            <p class="errorMessage" th:text="${ageErrorMessage}"></p>
+            <p>
+              <span>年齢: </span
+              ><input
+                type="text"
+                name="age"
+                th:value="${user != null ?  user.age : ''}"
+              />
+            </p>
+
+            <p class="errorMessage" th:text="${emailErrorMessage}"></p>
+            <p>
+              <span>メールアドレス: </span
+              ><input
+                type="text"
+                name="email"
+                th:value="${user != null ? user.email : ''}"
+              />
             </p>
             <p><button type="submit">登録</button></p>
           </form>
